@@ -72,10 +72,12 @@ public class BankAccount {
           System.out.println("Enter an amount to deposit: ");
           System.out.println("--------------------------");
           int amount = scanner.nextInt();
-          System.out.println("Are you sure you want to deposit :"+ amount + "? Y for Yes N for No.");
+          System.out.println(
+              "Are you sure you want to deposit: " + amount + "? Press Y for Yes N for No.");
           char confirm = scanner.next().charAt(0);
           if (confirm == 'Y') {
             deposit(amount);
+            System.out.println("You sucessfuly made a deposit of " + amount);
             System.out.println("\n");
           }
           break;
@@ -84,15 +86,34 @@ public class BankAccount {
           System.out.println("--------------------------");
           System.out.println("Enter an amount to withdraw: ");
           System.out.println("--------------------------");
-          amount = scanner.nextInt();
-          withdraw(amount);
-          System.out.println("Are you sure you want to withdraw :"+ amount + "? Y for Yes N for No.");
-          
+          int amount2 = scanner.nextInt();
+          System.out.println(
+              "Are you sure you want to withdraw: " + amount2 + "? Press Y for Yes N for No.");
+          confirm = scanner.next().charAt(0);
+          if (confirm == 'Y') {
+            withdraw(amount2);
+            System.out.println("You sucessfuly made a withdraw of " + amount2);
+            System.out.println("\n");
+          }
           break;
+
+        case 'D':
+          System.out.println("---------------------------------------");
+          getPreviousTransaction();
+          System.out.println("---------------------------------------");
+          System.out.println("\n");
+          break;
+          
+        case 'E':
+          System.out.println("**********************************");
+          break;
+
         default:
-          throw new IllegalArgumentException("Unexpected value: " + option);
+          System.out.println("Invalid option! Please enter again");
+          break;
       }
-    } while (condition);
+    } while (option != 'E');
+    System.out.println("ThankYou for using our services!");
 
   }
 }
